@@ -2,7 +2,7 @@ import { LeadFormData } from '../types';
 
 export const submitLead = async (data: LeadFormData) => {
   try {
-    const response = await fetch('https://webhook.site/eedfca81-929d-47a9-83dc-0cc3e334fed4', {
+    const response = await fetch('https://prop.digiheadway.in/api/submit.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
