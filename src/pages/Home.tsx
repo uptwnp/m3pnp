@@ -18,9 +18,13 @@ export const Home = () => {
   const closeModal = () => setModalConfig({ ...modalConfig, isOpen: false });
 
   const galleryImages = [
-    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-4-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png',
-    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-5-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png',
-    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-6-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png'
+    '/img/M3M Panipat - City of Dreams Panipat - Img1.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - Img2.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - Img3.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - Img4.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - Img5.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - Img6.webp',
+    '/img/M3M Panipat - City of Dreams Panipat - main.webp'
   ];
 
   const amenities = [
@@ -79,8 +83,8 @@ export const Home = () => {
   return (
     <>
       <Helmet>
-        <title>M3M City of Dreams Panipat - Premium Residential Plots</title>
-        <meta name="description" content="Premium residential plots at Sector 36 Panipat. Book at 20% now, pay rest after 1 year. Starting at ₹85,000/sq.yd*" />
+        <title>M3M Panipat - City of Dreams Panipat | M3M</title>
+        <meta name="description" content="M3M Panipat Project City of Dreams All Details Including Pricing, Location, Schedule Apointement, Offers, Brochure Download. Premium Residential Plots in Panipat M3M." />
         <script type="application/ld+json">
           {JSON.stringify(createWebsiteSchema(faqs))}
         </script>
@@ -96,7 +100,7 @@ export const Home = () => {
       <section 
         className="relative min-h-[100vh] flex items-center"
         style={{ 
-          backgroundImage: 'url("https://propertyingurugram.in/wp-content/uploads/2020/03/M3m-City-Of-Dreams.jpg")',
+          backgroundImage: 'url("/img/M3M Panipat - City of Dreams Panipat - main.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -155,7 +159,7 @@ export const Home = () => {
               <HomeIcon className="text-green-600 shrink-0" size={24} />
               <div>
                 <h3 className="font-semibold text-sm md:text-base">Plot Sizes</h3>
-                <p className="text-sm text-gray-600">180 - 1000 Sq.Yd</p>
+                <p className="text-sm text-gray-600">125 - 1000 Sq.Yd</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 md:p-6 bg-white rounded-lg shadow-md">
@@ -371,7 +375,7 @@ export const Home = () => {
       </section>
 
       {/* Sticky Buttons */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+      <div className="fixed bottom-6 left-6 flex flex-col gap-4 z-50">
         <a
           href="https://wa.me/918527134491"
           className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
@@ -380,6 +384,8 @@ export const Home = () => {
         >
           <MessageCircle size={24} />
         </a>
+        </div>
+        <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         <a
           href="tel:+918527134491"
           className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors animate-pulse"
