@@ -60,11 +60,11 @@ export const Header = () => {
 
           <div className="flex items-center gap-4">
             <a 
-              href="tel:+918527134491" 
+              href="tel:+919518091945" 
               className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors whitespace-nowrap"
             >
               <Phone size={20} />
-              <span className="hidden md:inline">+91 8527134491</span>
+              <span className="hidden md:inline">+91 9518091945</span>
             </a>
 
             <button 

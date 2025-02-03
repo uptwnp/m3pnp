@@ -10,15 +10,14 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <div className="space-y-2">
-              <a href="tel:+918527134491" className="flex items-center gap-2">
+              <a href="tel:+919518091945" className="flex items-center gap-2">
                 <Phone size={20} />
-                +91 8527134491
+                +91 9518091945
               </a>
               <div className="flex items-center gap-2">
                 <MapPin size={20} />
                 Sector 36, Panipat, Haryana
               </div>
-              <p className="text-sm mt-4">HRERA: HRERA-PKL-PNP-446-2023</p>
             </div>
           </div>
           

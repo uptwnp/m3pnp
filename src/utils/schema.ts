@@ -19,7 +19,7 @@ export const createWebsiteSchema = (faqs: FAQ[]) => ({
     "longitude": "76.9635"
   },
   "priceRange": "₹85,000/sq.yd onwards",
-  "telephone": "+918527134491",
+  "telephone": "+919518091945",
   "url": window.location.origin,
   "sameAs": [
     "https://www.facebook.com/M3MIndia",

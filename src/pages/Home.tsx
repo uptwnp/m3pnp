@@ -109,14 +109,14 @@ export const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="text-white text-center lg:text-left">
-              <div className="inline-block bg-green-600/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm md:text-base mb-4">
+              <div className="inline-block bg-green-600/60 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-black-200 md:text-base mb-4">
                 Premium Residential Plots
               </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                 M3M City of Dreams Panipat
               </h1>
               <p className="text-lg md:text-xl mb-2 text-gray-200">Sector 36, Panipat</p>
-              <div className="bg-green-600 text-white px-4 py-2 rounded-lg inline-block mb-4 md:mb-6 mt-2">
+              <div className="bg-blue-600 text-white px-4 py-2 rounded-lg inline-block mb-4 md:mb-6 mt-2">
                 Book at 20% Now, Pay Rest After 1 Year
               </div>
               <p className="text-2xl md:text-3xl font-semibold mb-6">
@@ -125,13 +125,13 @@ export const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button 
                   onClick={() => setModalConfig({ isOpen: true, type: 'price' })}
-                  className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors w-full sm:w-auto text-center"
+                  className="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors w-full sm:w-auto text-center"
                 >
                   Get Price Details
                 </button>
                 <button 
                   onClick={() => setModalConfig({ isOpen: true, type: 'brochure' })}
-                  className="bg-white text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors w-full sm:w-auto text-center"
+                  className="bg-white text-gray-900 px-8 py-3 font-bold rounded-lg hover:bg-gray-100 transition-colors w-full sm:w-auto text-center"
                 >
                   Download Brochure
                 </button>
@@ -250,6 +250,10 @@ export const Home = () => {
             <p className="text-lg mb-6">
               The project is strategically positioned near important landmarks such as Kabuli Bagh Masjid and Kala AMB Park. With its prime location and excellent connectivity, M3M City of Dreams provides easy access to major highways and transportation hubs.
             </p>
+            <p className="text-lg mb-6">
+            HRERA: HRERA-PKL-PNP-446-2023            
+            </p>
+            
           </div>
         </div>
       </section>
@@ -282,8 +286,8 @@ export const Home = () => {
             </div>
             <div className="aspect-w-16 aspect-h-9">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.96350931744384!3d29.390900000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDIzJzI3LjIiTiA3NsKwNTcnNDguNiJF!5e0!3m2!1sen!2sin!4v1623456789012!5m2!1sen!2sin"
-                width="100%"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.957000!3d29.427222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDI1JzM4LjAiTiA3NsKwNTcnMjUuMiJF!5e0!3m2!1sen!2sin!4v1707050000000!5m2!1sen!2sin" 
+    width="100%"
                 height="450"
                 style={{ border: 0 }}
                 allowFullScreen
@@ -364,7 +368,7 @@ export const Home = () => {
                     onClick={() => setModalConfig({ isOpen: true, type: 'quote' })}
                     className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors"
                   >
-                    Get Quote
+                    Check Pricing
                   </button>
                 </div>
               </div>
@@ -377,7 +381,7 @@ export const Home = () => {
       {/* Sticky Buttons */}
       <div className="fixed bottom-6 left-6 flex flex-col gap-4 z-50">
         <a
-          href="https://wa.me/918527134491"
+          href="https://wa.me/919518091945"
           className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
           target="_blank"
           rel="noopener noreferrer"
@@ -387,7 +391,7 @@ export const Home = () => {
         </div>
         <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         <a
-          href="tel:+918527134491"
+          href="tel:+919518091945"
           className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors animate-pulse"
         >
           <Phone size={24} />
