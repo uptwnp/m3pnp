@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { LeadForm } from '../components/LeadForm';
 import { Modal } from '../components/Modal';
-import { Phone, MapPin, Calendar, Clock, Award, Home as HomeIcon, Building, Leaf, Shield, Image, MessageCircle, CheckCircle2, Navigation } from 'lucide-react';
+import { Phone, MapPin, Calendar, Clock, Award, Home as HomeIcon, Building, Leaf, Shield, Image, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { createWebsiteSchema, createFAQSchema, createBreadcrumbSchema } from '../utils/schema';
+import type { FAQ } from '../types';
 
 export const Home = () => {
   const [modalConfig, setModalConfig] = useState<{
@@ -17,12 +18,9 @@ export const Home = () => {
   const closeModal = () => setModalConfig({ ...modalConfig, isOpen: false });
 
   const galleryImages = [
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+1',
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+2',
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+3',
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+4',
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+5',
-    'https://placehold.co/600x400/228B22/FFFFFF/png?text=M3M+City+of+Dreams+6'
+    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-4-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png',
+    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-5-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png',
+    'https://propertyingurugram.in/wp-content/uploads/elementor/thumbs/M3M-City-Of-Dreams-image-6-qtwybzaw28opwely7sjh1354r42ebwwx8wnw6ijup4.png'
   ];
 
   const amenities = [
@@ -55,25 +53,25 @@ export const Home = () => {
     { size: '1000 SQ.YD', price: '85,000/sq.yd*' }
   ];
 
-  const faqs = [
+  const faqs: FAQ[] = [
     {
-      q: 'What is the minimum plot size available in M3M City of Dreams Panipat?',
+      q: 'What is the minimum plot size available?',
       a: 'The minimum plot size available is 180 sq. yards.'
     },
     {
-      q: 'What is the payment plan for M3M City of Dreams Panipat?',
+      q: 'What is the payment plan?',
       a: 'You can book with 20% down payment and pay the rest after 1 year.'
     },
     {
-      q: 'When is the possession date for M3M City of Dreams Panipat?',
+      q: 'When is the possession date?',
       a: 'The expected possession date is December 2024.'
     },
     {
-      q: 'What are the nearby landmarks to M3M City of Dreams Panipat?',
-      a: 'The project is strategically located near Kabuli Bagh Masjid and Kala AMB Park in Sector 36, Panipat.'
+      q: 'What are the nearby landmarks?',
+      a: 'The project is strategically located near Kabuli Bagh Masjid and Kala AMB Park.'
     },
     {
-      q: 'What amenities are available at M3M City of Dreams Panipat?',
+      q: 'What amenities are available?',
       a: 'The project offers premium amenities including a clubhouse, swimming pool, gym, children\'s play area, and landscaped gardens.'
     }
   ];
@@ -94,76 +92,84 @@ export const Home = () => {
         </script>
       </Helmet>
 
-      {/* Hero Section with Form */}
+      {/* Hero Section */}
       <section 
-        className="relative min-h-screen flex items-center bg-cover bg-center"
+        className="relative min-h-[100vh] flex items-center"
         style={{ 
           backgroundImage: 'url("https://propertyingurugram.in/wp-content/uploads/2020/03/M3m-City-Of-Dreams.jpg")',
-          paddingTop: '80px'
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="text-white text-center lg:text-left">
+              <div className="inline-block bg-green-600/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm md:text-base mb-4">
+                Premium Residential Plots
+              </div>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                 M3M City of Dreams Panipat
               </h1>
-              <p className="text-xl md:text-2xl mb-2">Premium Residential Plots at Sector 36</p>
-              <p className="text-lg md:text-xl mb-6">Book at 20% Now, Pay Rest After 1 Year</p>
-              <p className="text-3xl font-semibold mb-8">Starting at ₹85,000/sq.yd*</p>
-              <div className="flex flex-wrap gap-4">
+              <p className="text-lg md:text-xl mb-2 text-gray-200">Sector 36, Panipat</p>
+              <div className="bg-green-600 text-white px-4 py-2 rounded-lg inline-block mb-4 md:mb-6 mt-2">
+                Book at 20% Now, Pay Rest After 1 Year
+              </div>
+              <p className="text-2xl md:text-3xl font-semibold mb-6">
+                Starting at <span className="text-green-400">₹85,000/sq.yd*</span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button 
                   onClick={() => setModalConfig({ isOpen: true, type: 'price' })}
-                  className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+                  className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors w-full sm:w-auto text-center"
                 >
                   Get Price Details
                 </button>
                 <button 
                   onClick={() => setModalConfig({ isOpen: true, type: 'brochure' })}
-                  className="bg-white text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="bg-white text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors w-full sm:w-auto text-center"
                 >
                   Download Brochure
                 </button>
               </div>
             </div>
-            <div>
-              <LeadForm className="bg-white/95 backdrop-blur-sm" />
+            <div className="hidden lg:block">
+              <LeadForm className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Info Section */}
-      <section className="py-16 bg-gray-100">
+      {/* Quick Info */}
+      <section className="py-8 md:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
-              <MapPin className="text-green-600" size={32} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            <div className="flex items-center gap-3 p-4 md:p-6 bg-white rounded-lg shadow-md">
+              <MapPin className="text-green-600 shrink-0" size={24} />
               <div>
-                <h3 className="font-semibold">Location</h3>
-                <p>Sector 36, Panipat</p>
+                <h3 className="font-semibold text-sm md:text-base">Location</h3>
+                <p className="text-sm text-gray-600">Sector 36, Panipat</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
-              <HomeIcon className="text-green-600" size={32} />
+            <div className="flex items-center gap-3 p-4 md:p-6 bg-white rounded-lg shadow-md">
+              <HomeIcon className="text-green-600 shrink-0" size={24} />
               <div>
-                <h3 className="font-semibold">Plot Sizes</h3>
-                <p>180 - 1000 Sq.Yd</p>
+                <h3 className="font-semibold text-sm md:text-base">Plot Sizes</h3>
+                <p className="text-sm text-gray-600">180 - 1000 Sq.Yd</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
-              <Calendar className="text-green-600" size={32} />
+            <div className="flex items-center gap-3 p-4 md:p-6 bg-white rounded-lg shadow-md">
+              <Calendar className="text-green-600 shrink-0" size={24} />
               <div>
-                <h3 className="font-semibold">Possession</h3>
-                <p>Dec 2024</p>
+                <h3 className="font-semibold text-sm md:text-base">Possession</h3>
+                <p className="text-sm text-gray-600">Dec 2024</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-white rounded-lg shadow-md">
-              <Award className="text-green-600" size={32} />
+            <div className="flex items-center gap-3 p-4 md:p-6 bg-white rounded-lg shadow-md">
+              <Award className="text-green-600 shrink-0" size={24} />
               <div>
-                <h3 className="font-semibold">Status</h3>
-                <p>New Launch</p>
+                <h3 className="font-semibold text-sm md:text-base">Status</h3>
+                <p className="text-sm text-gray-600">New Launch</p>
               </div>
             </div>
           </div>
@@ -171,12 +177,12 @@ export const Home = () => {
       </section>
 
       {/* Master Plan Section */}
-      <section className="py-16 bg-gray-100">
+      <section id="master-plan" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Master Plan</h2>
           <div className="aspect-w-16 aspect-h-9">
             <img 
-              src="https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" 
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
               alt="M3M City of Dreams Master Plan"
               className="rounded-lg shadow-lg w-full h-full object-cover"
             />
@@ -193,34 +199,34 @@ export const Home = () => {
       </section>
 
       {/* Floor Plan Section */}
-      <section className="py-16">
+      <section id="floor-plan" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Floor Plans</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                alt="180-225 SQ.YD Floor Plan"
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                alt="Floor Plan 1"
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2">180-225 SQ.YD</h3>
+              <h3 className="text-xl font-semibold mb-2">Type A - 180 SQ.YD</h3>
               <button
                 onClick={() => setModalConfig({ isOpen: true, type: 'brochure' })}
-                className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-colors"
+                className="text-green-600 font-semibold hover:text-green-700"
               >
                 Download Floor Plan
               </button>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <img 
-                src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                alt="360-1000 SQ.YD Floor Plan"
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                alt="Floor Plan 2"
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2">360-1000 SQ.YD</h3>
+              <h3 className="text-xl font-semibold mb-2">Type B - 225 SQ.YD</h3>
               <button
                 onClick={() => setModalConfig({ isOpen: true, type: 'brochure' })}
-                className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-colors"
+                className="text-green-600 font-semibold hover:text-green-700"
               >
                 Download Floor Plan
               </button>
@@ -230,7 +236,7 @@ export const Home = () => {
       </section>
 
       {/* Project Overview */}
-      <section id="overview" className="py-16 bg-gray-100">
+      <section id="overview" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Project Overview</h2>
           <div className="prose max-w-none">
@@ -245,96 +251,43 @@ export const Home = () => {
       </section>
 
       {/* Location Section */}
-      <section id="location" className="py-16">
+      <section id="location" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Strategic Location</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
-                <h3 className="text-xl font-semibold mb-4">Key Distances</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <Navigation className="text-green-600" size={20} />
-                    <span>10 mins from NH-44</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Navigation className="text-green-600" size={20} />
-                    <span>15 mins from Panipat Railway Station</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Navigation className="text-green-600" size={20} />
-                    <span>5 mins from Kala Amb Park</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Navigation className="text-green-600" size={20} />
-                    <span>20 mins from City Center</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">Nearby Landmarks</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <MapPin className="text-green-600" size={20} />
-                    <span>Kabuli Bagh Masjid</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="text-green-600" size={20} />
-                    <span>IOCL Refinery</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <MapPin className="text-green-600" size={20} />
-                    <span>Panipat Institute of Engineering</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="text-2xl font-semibold mb-6">Connectivity</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                  <span>5 minutes from NH-44</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                  <span>10 minutes from Panipat Railway Station</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                  <span>15 minutes from City Center</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 shrink-0 mt-1" size={20} />
+                  <span>20 minutes from Industrial Area</span>
+                </li>
+              </ul>
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307449444745!2d76.96350731507878!3d29.390900982115647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDIzJzI3LjIiTiA3NsKwNTcnNDguNiJF!5e0!3m2!1sen!2sin!4v1645000000000!5m2!1sen!2sin"
+            <div className="aspect-w-16 aspect-h-9">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.96350931744384!3d29.390900000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDIzJzI3LjIiTiA3NsKwNTcnNDguNiJF!5e0!3m2!1sen!2sin!4v1623456789012!5m2!1sen!2sin"
                 width="100%"
-                height="100%"
+                height="450"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg shadow-lg"
               ></iframe>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Features */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {keyFeatures.map((feature, index) => (
-              <div key={index} className="flex items-start gap-4 p-6 bg-white rounded-lg shadow-md">
-                <CheckCircle2 className="text-green-600 shrink-0" size={24} />
-                <p className="text-gray-700">{feature}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Plot Sizes & Pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {plotSizes.map((plot, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-2">{plot.size}</h3>
-                <p className="text-gray-600 mb-4">Starting from ₹{plot.price}</p>
-                <button
-                  onClick={() => setModalConfig({ isOpen: true, type: 'price' })}
-                  className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-colors"
-                >
-                  Get Quote
-                </button>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -393,17 +346,27 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Schedule Site Visit */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Schedule a Site Visit</h2>
-          <p className="text-lg mb-8">Experience the luxury and convenience of M3M City of Dreams in person</p>
-          <button
-            onClick={() => setModalConfig({ isOpen: true, type: 'visit' })}
-            className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Book Site Visit
-          </button>
+      {/* Pricing Section */}
+      <section id="pricing" className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">Plot Sizes & Pricing</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {plotSizes.map((plot, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-2">{plot.size}</h3>
+                  <p className="text-gray-600 mb-4">Starting from ₹{plot.price}</p>
+                  <button
+                    onClick={() => setModalConfig({ isOpen: true, type: 'quote' })}
+                    className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    Get Quote
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-gray-500 mt-6">*Prices are subject to change without prior notice</p>
         </div>
       </section>
 
@@ -435,7 +398,7 @@ export const Home = () => {
           modalConfig.type === 'quote' ? 'Get a Quote' : 'Schedule Site Visit'
         }
       >
-        <LeadForm formType={modalConfig.type} />
+        <LeadForm formType={modalConfig.type} inModal={true} />
       </Modal>
     </>
   );

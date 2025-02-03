@@ -6,9 +6,10 @@ import type { LeadFormData } from '../types';
 interface LeadFormProps {
   formType?: 'price' | 'brochure' | 'quote' | 'visit';
   className?: string;
+  inModal?: boolean;
 }
 
-export const LeadForm = ({ formType = 'price', className = '' }: LeadFormProps) => {
+export const LeadForm = ({ formType = 'price', className = '', inModal = false }: LeadFormProps) => {
   const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     phone: '',
@@ -20,13 +21,6 @@ export const LeadForm = ({ formType = 'price', className = '' }: LeadFormProps) 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const titles = {
-    price: 'Get Price Details',
-    brochure: 'Download Brochure',
-    quote: 'Get a Quote',
-    visit: 'Schedule Site Visit'
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -34,7 +28,7 @@ export const LeadForm = ({ formType = 'price', className = '' }: LeadFormProps) 
       const success = await submitLead(formData);
       if (success) {
         toast.success('Thank you! We will contact you soon.');
-        setFormData({ name: '', phone: '', email: '', interest: titles[formType] });
+        setFormData({ name: '', phone: '', email: '', interest: formData.interest });
       } else {
         toast.error('Something went wrong. Please try again.');
       }
@@ -46,8 +40,14 @@ export const LeadForm = ({ formType = 'price', className = '' }: LeadFormProps) 
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg ${className}`}>
-      <h3 className="text-xl font-semibold mb-4">{titles[formType]}</h3>
+    <form onSubmit={handleSubmit} className={`${!inModal ? 'p-6 rounded-lg shadow-lg' : ''} ${className}`}>
+      {!inModal && (
+        <h3 className="text-xl font-semibold mb-4">
+          {formType === 'price' ? 'Get Price Details' :
+           formType === 'brochure' ? 'Download Brochure' :
+           formType === 'quote' ? 'Get a Quote' : 'Schedule Site Visit'}
+        </h3>
+      )}
       <div className="space-y-4">
         <div className="relative">
           <input
@@ -91,7 +91,7 @@ export const LeadForm = ({ formType = 'price', className = '' }: LeadFormProps) 
           disabled={isSubmitting}
           className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg font-semibold"
         >
-          {isSubmitting ? 'Submitting...' : titles[formType]}
+          {isSubmitting ? 'Submitting...' : formData.interest}
         </button>
       </div>
     </form>
