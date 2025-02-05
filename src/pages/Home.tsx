@@ -202,7 +202,7 @@ export const Home = () => {
                 Premium Residential Plots
               </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                M3M City of Dreams Panipat
+                M3M Panipat - City of Dreams
               </h1>
               <p className="text-lg md:text-xl mb-2 text-gray-200">
                 Sector 36, Panipat
@@ -212,7 +212,7 @@ export const Home = () => {
               </div>
               <p className="text-2xl md:text-3xl font-semibold mb-6">
                 Starting at{" "}
-                <span className="text-green-400">₹85,000/sq.yd*</span>
+                <span className="text-green-400">₹**,000/sq.yd*</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
