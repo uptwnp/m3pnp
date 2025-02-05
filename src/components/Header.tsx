@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Home, Info, FileText, Shield, MapPin, Image, Building2, HelpCircle } from 'lucide-react';
+import { trackButtonClick, trackMenuToggle } from '../utils/analytics';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,8 +16,16 @@ export const Header = () => {
     { path: '/#faq', icon: <HelpCircle size={20} />, label: 'FAQs' },
   ];
 
+  const handleMenuToggle = () => {
+    const newState = !isMenuOpen;
+    setIsMenuOpen(newState);
+    trackMenuToggle(newState ? 'open' : 'close');
+  };
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    trackButtonClick('navigation', id.replace('/#', ''));
+    
     if (location.pathname !== '/') {
       window.location.href = id;
       return;
@@ -32,6 +41,10 @@ export const Header = () => {
       });
     }
     setIsMenuOpen(false);
+  };
+
+  const handlePhoneClick = () => {
+    trackContact('phone');
   };
 
   return (
@@ -62,6 +75,7 @@ export const Header = () => {
             <a 
               href="tel:+919518091945" 
               className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors whitespace-nowrap"
+              onClick={handlePhoneClick}
             >
               <Phone size={20} />
               <span className="hidden md:inline">+91 9518091945</span>
@@ -69,7 +83,7 @@ export const Header = () => {
 
             <button 
               className="lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={handleMenuToggle}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

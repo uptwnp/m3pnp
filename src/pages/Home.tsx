@@ -286,8 +286,8 @@ export const Home = () => {
             </div>
             <div className="aspect-w-16 aspect-h-9">
               <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.957000!3d29.427222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDI1JzM4LjAiTiA3NsKwNTcnMjUuMiJF!5e0!3m2!1sen!2sin!4v1707050000000!5m2!1sen!2sin" 
-    width="100%"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.957000!3d29.427222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDI1JzM4LjAiTiA3NsKwNTcnMjUuMiJF!5e0!3m2!1sen!2sin!4v1707050000000!5m2!1sen!2sin" 
+                width="100%"
                 height="450"
                 style={{ border: 0 }}
                 allowFullScreen
@@ -339,22 +339,7 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="max-w-3xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="font-semibold mb-2">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
+      {/* Pricing Section - Moved above FAQ */}
       <section id="pricing" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Plot Sizes & Pricing</h2>
@@ -378,6 +363,38 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mx-auto space-y-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="font-semibold mb-2">{faq.q}</h3>
+                <p className="text-gray-600">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Call to Action Section */}
+      <section className="py-16 bg-green-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Experience Your Dream Home?</h2>
+            <p className="text-xl mb-8">Schedule a site visit today and take the first step towards your new home.</p>
+            <button
+              onClick={() => setModalConfig({ isOpen: true, type: 'visit' })}
+              className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              <Calendar size={24} />
+              Schedule Site Visit
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Sticky Buttons */}
       <div className="fixed bottom-6 left-6 flex flex-col gap-4 z-50">
         <a
@@ -388,8 +405,8 @@ export const Home = () => {
         >
           <MessageCircle size={24} />
         </a>
-        </div>
-        <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+      </div>
+      <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         <a
           href="tel:+919518091945"
           className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors animate-pulse"
@@ -401,7 +418,7 @@ export const Home = () => {
       {/* Modal */}
       <Modal
         isOpen={modalConfig.isOpen}
-        onClose={closeModal}
+        onClose={() => setModalConfig({ ...modalConfig, isOpen: false })}
         title={
           modalConfig.type === 'price' ? 'Get Price Details' :
           modalConfig.type === 'brochure' ? 'Download Brochure' :

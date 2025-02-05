@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitLead } from '../utils/api';
 import { toast } from 'react-hot-toast';
+import { trackFormStart, trackFormSubmit } from '../utils/analytics';
 import type { LeadFormData } from '../types';
 
 interface LeadFormProps {
@@ -21,12 +22,23 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Track when user starts filling the form
+    if (prev[name] === '') {
+      trackFormStart(formType);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
       const success = await submitLead(formData);
       if (success) {
+        trackFormSubmit(formType, formData);
         toast.success('Thank you! We will contact you soon.');
         setFormData({ name: '', phone: '', email: '', interest: formData.interest });
       } else {
@@ -58,7 +70,7 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
             autoComplete="name"
             className="w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={handleInputChange}
           />
         </div>
         <div className="relative">
@@ -71,7 +83,7 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
             pattern="[0-9]{10}"
             className="w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            onChange={handleInputChange}
           />
         </div>
         <div className="relative">
@@ -83,7 +95,7 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
             autoComplete="email"
             className="w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={handleInputChange}
           />
         </div>
         <button
