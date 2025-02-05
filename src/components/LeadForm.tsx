@@ -80,13 +80,13 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
             placeholder="Phone Number"
             required
             autoComplete="tel"
-            pattern="[0-9]{10}"
+            pattern="(\+91)?[0-9]{10}"
             className="w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             value={formData.phone}
             onChange={handleInputChange}
           />
         </div>
-        <div className="relative">
+        {/* <div className="relative">
           <input
             type="email"
             name="email"
@@ -97,7 +97,7 @@ export const LeadForm = ({ formType = 'price', className = '', inModal = false }
             value={formData.email}
             onChange={handleInputChange}
           />
-        </div>
+        </div> */}
         <button
           type="submit"
           disabled={isSubmitting}
