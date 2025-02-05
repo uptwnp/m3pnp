@@ -212,7 +212,7 @@ export const Home = () => {
               </div>
               <p className="text-2xl md:text-3xl font-semibold mb-6">
                 Starting at{" "}
-                <span className="text-green-400">₹**,000/sq.yd*</span>
+                <span className="text-green-400">₹83,000/sq.yd*</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
