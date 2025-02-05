@@ -32,12 +32,16 @@ export const LeadForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const { name, value } = e.target;
-    // setFormData(prev => ({ ...prev, [name]: value }));
-    // // Track when user starts filling the form
-    // if (prev[name] === '') {
-    //   trackFormStart(formType);
-    // }
+    const { name, value } = e.target;
+
+    setFormData((prevFormData) => {
+      // Track when user starts filling the form
+      if (prevFormData[name] === "") {
+        trackFormStart(formType);
+      }
+
+      return { ...prevFormData, [name]: value };
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
