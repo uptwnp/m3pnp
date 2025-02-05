@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { LeadForm } from "../components/LeadForm";
 import { Modal } from "../components/Modal";
+import { trackButtonClick, trackContact } from "../utils/analytics";
+
 import {
   Phone,
   MapPin,
@@ -216,17 +218,20 @@ export const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
-                  onClick={() =>
-                    setModalConfig({ isOpen: true, type: "price" })
-                  }
+                  onClick={() => {
+                    trackButtonClick("get_price_hero"); // Track the click for the price details button
+                    setModalConfig({ isOpen: true, type: "price" }); // Set the modal config to open the price details modal
+                  }}
                   className="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors w-full sm:w-auto text-center"
                 >
                   Get Price Details
                 </button>
+
                 <button
-                  onClick={() =>
-                    setModalConfig({ isOpen: true, type: "brochure" })
-                  }
+                  onClick={() => {
+                    trackButtonClick("download_brochure_hero"); // Track the click for the brochure button
+                    setModalConfig({ isOpen: true, type: "brochure" }); // Set the modal config to open the brochure modal
+                  }}
                   className="bg-white text-gray-900 px-8 py-3 font-bold rounded-lg hover:bg-gray-100 transition-colors w-full sm:w-auto text-center"
                 >
                   Download Brochure
@@ -315,9 +320,10 @@ export const Home = () => {
               />
               <h3 className="text-xl font-semibold mb-2">Type A - 180 SQ.YD</h3>
               <button
-                onClick={() =>
-                  setModalConfig({ isOpen: true, type: "brochure" })
-                }
+                onClick={() => {
+                  trackButtonClick("dwnld_floor_plan");
+                  setModalConfig({ isOpen: true, type: "brochure" });
+                }}
                 className="text-green-600 font-semibold hover:text-green-700"
               >
                 Download Floor Plan
@@ -331,9 +337,10 @@ export const Home = () => {
               />
               <h3 className="text-xl font-semibold mb-2">Type B - 225 SQ.YD</h3>
               <button
-                onClick={() =>
-                  setModalConfig({ isOpen: true, type: "brochure" })
-                }
+                onClick={() => {
+                  trackButtonClick("dwnld_floor_plan");
+                  setModalConfig({ isOpen: true, type: "brochure" });
+                }}
                 className="text-green-600 font-semibold hover:text-green-700"
               >
                 Download Floor Plan
@@ -489,9 +496,10 @@ export const Home = () => {
                   <h3 className="text-2xl font-bold mb-2">{plot.size}</h3>
                   <p className="text-gray-600 mb-4">{plot.price}</p>
                   <button
-                    onClick={() =>
-                      setModalConfig({ isOpen: true, type: "quote" })
-                    }
+                    onClick={() => {
+                      trackButtonClick("check_pricing");
+                      setModalConfig({ isOpen: true, type: "quote" });
+                    }}
                     className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors"
                   >
                     Check Pricing
@@ -535,7 +543,10 @@ export const Home = () => {
               new home.
             </p>
             <button
-              onClick={() => setModalConfig({ isOpen: true, type: "visit" })}
+              onClick={() => {
+                trackButtonClick("schedule_visit");
+                setModalConfig({ isOpen: true, type: "visit" });
+              }}
               className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
             >
               <Calendar size={24} />
@@ -552,6 +563,9 @@ export const Home = () => {
           className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            trackContact("whatsapp");
+          }}
         >
           <MessageCircle size={24} />
         </a>
@@ -560,6 +574,9 @@ export const Home = () => {
         <a
           href="tel:+919518091945"
           className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors animate-pulse"
+          onClick={() => {
+            trackContact("phone");
+          }}
         >
           <Phone size={24} />
         </a>

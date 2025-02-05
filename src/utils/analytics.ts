@@ -18,6 +18,7 @@ export const sendGAEvent = (
 ) => {
   if (window.gtag) {
     window.gtag("event", eventName, eventParams);
+    console.log(eventName + eventParams);
   }
 };
 
@@ -63,7 +64,7 @@ export const trackFormStart = (formType: string) => {
 };
 
 export const trackFormSubmit = (formType: string, formData: LeadFormData) => {
-  sendGAEvent("form_submit", {
+  sendGAEvent("my_form_submit", {
     form_type: formType,
     user_type: "lead",
     lead_type: formData.interest,
