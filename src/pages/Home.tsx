@@ -210,11 +210,11 @@ export const Home = () => {
                 Sector 36, Panipat
               </p>
               <div className="bg-blue-600 text-white px-4 py-2 rounded-lg inline-block mb-4 md:mb-6 mt-2">
-                Book at 20% Now, Pay Rest After 1 Year
+                Book at 5 lakh Now, Pay 70% After 1 Year
               </div>
               <p className="text-2xl md:text-3xl font-semibold mb-6">
                 Starting at{" "}
-                <span className="text-green-400">₹83,000/sq.yd*</span>
+                <span className="text-green-400">₹85,000/sq.yd*</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button
