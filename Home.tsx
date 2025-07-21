@@ -88,7 +88,10 @@ export const Home = () => {
     { size: "463 SQ.YD", price: "New Pricing Launched*" },
     { size: "586 SQ.YD", price: "New Pricing Launched*" },
     { size: "700 SQ.YD", price: "New Pricing Launched*" },
-    { size: "850 SQ.YD", price: "New Pricing Launched*" },
+    {
+      size: "https://m3mcodpanipat.in/0 SQ.YD",
+      price: "New Pricing Launched*",
+    },
     { size: "1000 SQ.YD", price: "New Pricing Launched*" },
   ];
 
@@ -314,7 +317,7 @@ export const Home = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-16005https://m3mcodpanipat.in/154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
                 alt="Floor Plan 1"
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
@@ -417,7 +420,7 @@ export const Home = () => {
             </div>
             <div className="aspect-w-16 aspect-h-9">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7307121455473!2d76.957000!3d29.427222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDI1JzM4LjAiTiA3NsKwNTcnMjUuMiJF!5e0!3m2!1sen!2sin!4v1707050000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34https://m3mcodpanipat.in/.7307121455473!2d76.957000!3d29.427222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddc57b5555555%3A0x0!2zMjnCsDI1JzM4LjAiTiA3NsKwNTcnMjUuMiJF!5e0!3m2!1sen!2sin!4v1707050000000!5m2!1sen!2sin"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
